@@ -31,3 +31,54 @@ body{
 .card:hover{
     transform: translateY(-5px);
 }
+.filter_container{
+    display: flex;
+    gap: 10px;
+    margin: 20px 30px;
+
+}
+.all{
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    width: 100px;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.announcement{
+    background-color: #2196F3;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    width: 150px;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.event{
+    background-color: #FF9800;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    width: 120px;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.urgent{
+    background-color: #f44336;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    width: 120px;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.all:hover,.announcement:hover,.event:hover,.urgent:hover{
+    opacity: 0.8;
+    cursor: pointer;
+    
+}

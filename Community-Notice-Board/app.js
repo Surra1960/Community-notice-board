@@ -1,57 +1,90 @@
 let idCounter=0;
+const cardContainer=document.getElementById("card_container");
+const allButton=document.getElementById("all");
+const announcementButton=document.getElementById("announcement");
+const eventButton=document.getElementById("event");
+const urgentButton=document.getElementById("urgent");
 
-let Notices=[Notice1={
+let Notices=[{
     id:idCounter++,
     title:"Community Meeting",
-    category:"General",
+    category:"Announcement",
     description:"Join us for a community meeting to discuss upcoming events and initiatives.",
     date:"2023-09-15"
 },
- Notice2={
+ {
     id:idCounter++,
     title:"Blood Donation Drive",
-    category:"Health",
+    category:"Event",
     description:"We are organizing a blood donation drive. Your contribution can save lives.",
     date:"2023-09-20"
 },
- Notice3={
+ {
     id:idCounter++,
     title:"University Registration Deadline",
-    category:"Education",
+    category:"Announcement",
     description:"Reminder: The registration deadline for the upcoming semester is approaching. Make sure to complete your registration on time.",
     date:"2023-09-25"
 },
- Notice4={
+ {
     id:idCounter++,
     title:"Water Supply Maintenance",
-    category:"Utilities",
+    category:"Urgent",
     description:"Please be informed that there will be a scheduled maintenance of the water supply system in our community. Water supply may be temporarily disrupted during this period.",
     date:"2023-09-30"
 },
-Notice5={
+{
     id:idCounter++,
     title:"Community Clean-Up Event",
-    category:"Environment",
+    category:"Event",
     description:"Join us for a community clean-up event to help keep our neighborhood beautiful.",
     date:"2023-10-05"
 }]
+allButton.addEventListener("click",displayAll);
+announcementButton.addEventListener("click",displayAnnouncements);
+eventButton.addEventListener("click",displayEvents);
+urgentButton.addEventListener("click",displayUrgent);
 
-const cardContainer=document.getElementById("card_container");
-for(let i=0;i<Notices.length;i++){
+function createCards(Notice){
+    
+   for (let i=0;i<Notice.length;i++){
     const card=document.createElement("div");
     card.className="card";
     const title=document.createElement("h2");
-    title.textContent=Notices[i].title;
+    title.textContent=Notice[i].title;
     const category=document.createElement("p");
-    category.textContent="Category: "+Notices[i].category;
+    category.textContent="Category: "+Notice[i].category;
     const description=document.createElement("p");
-    description.textContent=Notices[i].description;
+    description.textContent=Notice[i].description;
     const date=document.createElement("p");
-    date.textContent="Date: "+Notices[i].date;
-   
+    date.textContent="Date: "+Notice[i].date;
     card.appendChild(title);
     card.appendChild(category);
     card.appendChild(description);
     card.appendChild(date);
     cardContainer.appendChild(card);
+   }    
+}
+createCards(Notices);
+
+function displayAll(){
+    cardContainer.innerHTML="";
+    createCards(Notices);
+}
+function displayAnnouncements(){
+    cardContainer.innerHTML="";
+    const Announcements=Notices.filter(notice=>notice.category==="Announcement");
+    createCards(Announcements);
+}
+
+function displayEvents(){
+    cardContainer.innerHTML="";
+    const Events=Notices.filter(notice=>notice.category==="Event");
+    createCards(Events);
+}
+
+function displayUrgent(){
+    cardContainer.innerHTML="";
+    const Urgent=Notices.filter(notice=>notice.category==="Urgent");
+    createCards(Urgent);
 }
