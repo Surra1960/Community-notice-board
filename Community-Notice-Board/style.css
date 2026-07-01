@@ -19,24 +19,41 @@ body{
 .card{
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    box-shadow: 0 4px 8px rgba(0,0,0,.1);
     padding: 20px;
     gap: 10px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    transition: transform 0.2s;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease;
 }
+
+.card.show{
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .card:hover{
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.05);
 }
 .filter_container{
     display: flex;
     gap: 10px;
     margin: 20px 30px;
-
 }
+.filter_container button{
+ transition: 
+    transform .3s ease-in-out;
+}
+.filter_container button:hover{
+    transform: 
+    translateY(-4px);
+    scale: 1.05;
+}
+
 .all{
     background-color: #4CAF50;
     color: white;

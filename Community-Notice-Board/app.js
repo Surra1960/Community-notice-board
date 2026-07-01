@@ -4,7 +4,7 @@ const allButton=document.getElementById("all");
 const announcementButton=document.getElementById("announcement");
 const eventButton=document.getElementById("event");
 const urgentButton=document.getElementById("urgent");
-
+const search_Notice=document.getElementById("searchInput");
 let Notices=[{
     id:idCounter++,
     title:"Community Meeting",
@@ -44,6 +44,7 @@ allButton.addEventListener("click",displayAll);
 announcementButton.addEventListener("click",displayAnnouncements);
 eventButton.addEventListener("click",displayEvents);
 urgentButton.addEventListener("click",displayUrgent);
+search_Notice.addEventListener("input",searchNotices);
 
 function createCards(Notice){
     
@@ -63,6 +64,9 @@ function createCards(Notice){
     card.appendChild(description);
     card.appendChild(date);
     cardContainer.appendChild(card);
+    setTimeout(() => {
+    card.classList.add("show");
+}, 10);
    }    
 }
 createCards(Notices);
@@ -87,4 +91,11 @@ function displayUrgent(){
     cardContainer.innerHTML="";
     const Urgent=Notices.filter(notice=>notice.category==="Urgent");
     createCards(Urgent);
+}
+
+function searchNotices(){
+    cardContainer.innerHTML="";
+    const searchTerm=search_Notice.value.toLowerCase();
+    const SearchedNotices=Notices.filter(notice=>notice.title.toLowerCase().includes(searchTerm) || notice.description.toLowerCase().includes(searchTerm));
+    createCards(SearchedNotices);
 }
